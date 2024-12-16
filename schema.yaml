@@ -465,22 +465,26 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                recording_mbids:
-                  type: array
-                  items:
+              type: array
+              items:
+                type: object
+                properties:
+                  recording_mbids:
+                    type: array
+                    items:
+                      type: string
+                      format: uuid
+                    example:
+                      - 7db2c09d-345f-46e6-900e-0f4499e29c3d
+                  algorithm:
                     type: string
-                    format: uuid
-                  example:
-                    - 7db2c09d-345f-46e6-900e-0f4499e29c3d
-                algorithm:
-                  type: string
-                  enum: *a4
-                  example: session_based_days_9000_session_300_contribution_5_threshold_15_limit_50_skip_30
-              required:
-                - recording_mbids
-                - algorithm
+                    enum: *a4
+                    example: session_based_days_9000_session_300_contribution_5_threshold_15_limit_50_skip_30
+                required:
+                  - recording_mbids
+                  - algorithm
+              minItems: 1
+              maxItems: 1
       responses:
         "200":
           description: successful response
