@@ -9,7 +9,7 @@ export const SpotifyIdFromMetadata = createGetPostPair({
       example: "Motion City Soundtrack",
     }),
     release_name: z.string().openapi({
-      example: "Commit This to Memory",  
+      example: "Commit This to Memory",
     }),
     track_name: z.string().openapi({
       example: "Everything Is Alright",
