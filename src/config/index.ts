@@ -1,6 +1,6 @@
-import { OpenAPIObjectConfigV31 } from "@asteasolutions/zod-to-openapi/dist/v3.1/openapi-generator";
+import { OpenAPIObjectConfig } from "@asteasolutions/zod-to-openapi/dist/v3.0/openapi-generator";
 
-export const config:OpenAPIObjectConfigV31 = {
+export const config:OpenAPIObjectConfig = {
   info: {
     title: "ListenBrainz Labs API",
     version: "1.0.0",
@@ -11,7 +11,7 @@ export const config:OpenAPIObjectConfigV31 = {
   }, {
       name: "Get API",
     }],
-  openapi: "3.1.0",
+  openapi: "3.0.0",
   servers: [
     {
       url: "https://labs.api.listenbrainz.org",

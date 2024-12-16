@@ -1,5 +1,5 @@
 import "./import"
-import { OpenApiGeneratorV31, OpenAPIRegistry } from '@asteasolutions/zod-to-openapi';
+import { OpenApiGeneratorV3, OpenAPIRegistry } from '@asteasolutions/zod-to-openapi';
 import {config} from './config'
 import parseArgs from 'minimist';
 import YAML from 'yaml';
@@ -28,8 +28,7 @@ const main = async () => {
     SpotifyIdFromMetadata,
     SimilarRecordings,
   ].flat().map(x=>r.registerPath(x))
-
-  const generator = new OpenApiGeneratorV31(r.definitions);
+  const generator = new OpenApiGeneratorV3(r.definitions);
   const document = generator.generateDocument(config)
   const yamlDocument = YAML.stringify(document)
 

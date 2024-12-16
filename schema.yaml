@@ -5,7 +5,7 @@ info:
 tags:
   - name: Post API
   - name: Get API
-openapi: 3.1.0
+openapi: 3.0.0
 servers:
   - url: https://labs.api.listenbrainz.org
 components:
@@ -87,15 +87,17 @@ paths:
           application/json:
             schema:
               type: array
-              prefixItems:
-                - type: object
-                  properties:
-                    artist_mbid:
-                      type: string
-                      format: uuid
-                      example: 190e78ac-8f44-4bf1-a4ff-95ed9376ad9e
-                  required:
-                    - artist_mbid
+              items:
+                type: object
+                properties:
+                  artist_mbid:
+                    type: string
+                    format: uuid
+                    example: 190e78ac-8f44-4bf1-a4ff-95ed9376ad9e
+                required:
+                  - artist_mbid
+              minItems: 1
+              maxItems: 1
             example:
               - artist_mbid: 190e78ac-8f44-4bf1-a4ff-95ed9376ad9e
       responses:
@@ -197,15 +199,17 @@ paths:
           application/json:
             schema:
               type: array
-              prefixItems:
-                - type: object
-                  properties:
-                    recording_mbid:
-                      type: string
-                      format: uuid
-                      example: 7db2c09d-345f-46e6-900e-0f4499e29c3d
-                  required:
-                    - recording_mbid
+              items:
+                type: object
+                properties:
+                  recording_mbid:
+                    type: string
+                    format: uuid
+                    example: 7db2c09d-345f-46e6-900e-0f4499e29c3d
+                required:
+                  - recording_mbid
+              minItems: 1
+              maxItems: 1
             example:
               - recording_mbid: 7db2c09d-345f-46e6-900e-0f4499e29c3d
       responses:
@@ -315,22 +319,24 @@ paths:
           application/json:
             schema:
               type: array
-              prefixItems:
-                - type: object
-                  properties:
-                    artist_name:
-                      type: string
-                      example: Motion City Soundtrack
-                    release_name:
-                      type: string
-                      example: Commit This to Memory
-                    track_name:
-                      type: string
-                      example: Everything Is Alright
-                  required:
-                    - artist_name
-                    - release_name
-                    - track_name
+              items:
+                type: object
+                properties:
+                  artist_name:
+                    type: string
+                    example: Motion City Soundtrack
+                  release_name:
+                    type: string
+                    example: Commit This to Memory
+                  track_name:
+                    type: string
+                    example: Everything Is Alright
+                required:
+                  - artist_name
+                  - release_name
+                  - track_name
+              minItems: 1
+              maxItems: 1
             example:
               - artist_name: Motion City Soundtrack
                 release_name: Commit This to Memory
@@ -410,9 +416,8 @@ paths:
                       type: string
                       example: Jimmy Eat World
                     artist_credit_mbids:
-                      type:
-                        - array
-                        - "null"
+                      type: array
+                      nullable: true
                       items:
                         type: string
                         format: uuid
@@ -497,9 +502,8 @@ paths:
                       type: string
                       example: Jimmy Eat World
                     artist_credit_mbids:
-                      type:
-                        - array
-                        - "null"
+                      type: array
+                      nullable: true
                       items:
                         type: string
                         format: uuid
@@ -539,4 +543,3 @@ paths:
           description: Bad Request
           content:
             text/html: *a1
-webhooks: {}
