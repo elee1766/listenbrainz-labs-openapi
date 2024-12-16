@@ -19,14 +19,14 @@ export const SimilarRecordings = createGetPostPair({
     }),
   }),
   postParams: {
-    schema: z.object({
+    schema: z.tuple([z.object({
       recording_mbids: z.array(z.string().uuid()).openapi({
         example: ["7db2c09d-345f-46e6-900e-0f4499e29c3d"],
       }),
       algorithm: z.enum(algorithms).openapi({
         example: algorithms[0],
       }),
-    }),
+    })]),
   },
   response: {
     description: "successful response",
