@@ -8,6 +8,7 @@ import { ArtistCountryCodeFromArtistMbid } from "./endpoints/artist-country-code
 import { SpotifyIdFromMbid } from "./endpoints/spotify-id-from-mbid";
 import { SpotifyIdFromMetadata } from "./endpoints/spotify-id-from-metadata";
 import { SimilarRecordings } from "./endpoints/similar-recordings";
+import { BulkTagLookup } from "./endpoints/bulk-tag-lookup";
 
 const argv = parseArgs(process.argv.slice(2));
 
@@ -27,6 +28,7 @@ const main = async () => {
     SpotifyIdFromMbid,
     SpotifyIdFromMetadata,
     SimilarRecordings,
+    BulkTagLookup,
   ].flat().map(x=>r.registerPath(x))
   const generator = new OpenApiGeneratorV3(r.definitions);
   const document = generator.generateDocument(config)

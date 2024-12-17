@@ -3,7 +3,7 @@ import { createGetPostPair } from "../common/createPair";
 
 
 
-export const SpotifyIdFromMbid = createGetPostPair({
+export const BulkTagLookup = createGetPostPair({
   path: "/bulk-tag-lookup/json",
   description: "bulk-tag-lookup",
   params:  z.object({

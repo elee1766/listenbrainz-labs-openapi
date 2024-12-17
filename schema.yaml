@@ -547,3 +547,102 @@ paths:
           description: Bad Request
           content:
             text/html: *a1
+  /bulk-tag-lookup/json:
+    get:
+      tags:
+        - Get API
+      description: bulk-tag-lookup
+      parameters:
+        - schema:
+            type: string
+            format: uuid
+            example: 7db2c09d-345f-46e6-900e-0f4499e29c3d
+          required: true
+          name: recording_mbid
+          in: query
+      responses:
+        "200":
+          description: successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    recording_mbid:
+                      type: string
+                      format: uuid
+                      example: 7db2c09d-345f-46e6-900e-0f4499e29c3d
+                    tag:
+                      type: string
+                      example: blues
+                    percent:
+                      type: number
+                      example: 0.022332730560578662
+                    source:
+                      type: string
+                      example: recording
+                  required:
+                    - recording_mbid
+                    - tag
+                    - percent
+                    - source
+        "400":
+          description: Bad Request
+          content:
+            text/html: *a1
+    post:
+      tags:
+        - Post API
+      description: bulk-tag-lookup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  recording_mbid:
+                    type: string
+                    format: uuid
+                    example: 7db2c09d-345f-46e6-900e-0f4499e29c3d
+                required:
+                  - recording_mbid
+              minItems: 1
+              maxItems: 1
+            example:
+              - recording_mbid: 7db2c09d-345f-46e6-900e-0f4499e29c3d
+      responses:
+        "200":
+          description: successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    recording_mbid:
+                      type: string
+                      format: uuid
+                      example: 7db2c09d-345f-46e6-900e-0f4499e29c3d
+                    tag:
+                      type: string
+                      example: blues
+                    percent:
+                      type: number
+                      example: 0.022332730560578662
+                    source:
+                      type: string
+                      example: recording
+                  required:
+                    - recording_mbid
+                    - tag
+                    - percent
+                    - source
+        "400":
+          description: Bad Request
+          content:
+            text/html: *a1
